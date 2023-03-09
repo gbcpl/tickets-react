@@ -1,0 +1,7 @@
+.headerTags {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    border-bottom: none;
+}
+

@@ -1,0 +1,18 @@
+.ticket {
+    margin: 20px;
+    border-bottom: solid 2px;
+    border-color: antiquewhite;
+}
+
+.tags {
+    display: flex;
+}
+
+.created {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    text-align: center;
+}
