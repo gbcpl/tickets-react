@@ -10,9 +10,6 @@ function Header() {
                 <Button variant="primary">Plus récentes</Button>{' '}
                 <Button variant="primary">En cours</Button>{' '}
                 <Button variant="primary">Fermées</Button>{' '}             
-                <Button className="newTicket">
-                    Poser une nouvelle question
-                </Button>
             </Card.Body>
 
         </Card> 

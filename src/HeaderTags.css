@@ -5,3 +5,15 @@
     border-bottom: none;
 }
 
+.tag {
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 14px;
+    
+}
+
+@media screen and (max-width: 1024px) {
+    .tag {
+        display: none !important;
+    }
+}

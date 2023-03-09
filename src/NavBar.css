@@ -9,4 +9,18 @@
 
 .logIn {
     margin-right: 10px;
+    margin-left: 10px;
+}
+
+.menu {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .navbarhidden {
+        display: none !important;
+    }
+    .menu {
+        display: block;
+    }
 }

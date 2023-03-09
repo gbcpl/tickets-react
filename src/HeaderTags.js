@@ -10,17 +10,19 @@ function HeaderTags() {
     return (
         <Card>
             <Card.Body className="headerTags">
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
-                <Image src="/thumbnail.png" rounded />
+                <Button variant="secondary" className="tag">HTML</Button>{' '}
+                <Button variant="secondary" className="tag">CSS</Button>{' '}
+                <Button variant="secondary" className="tag">JavaScript</Button>{' '}
+                <Button variant="secondary" className="tag">PHP</Button>{' '}
+                <Button variant="secondary" className="tag">SQL</Button>{' '}
+                <Button variant="secondary" className="tag">React</Button>{' '}
+                <Button variant="secondary" className="tag">React Native</Button>{' '}
+                <Button variant="secondary" className="tag">Flutter</Button>{' '}
+                <Button variant="secondary" className="tag">Symphony</Button>{' '}
+                <Button variant="secondary" className="tag">Bootstrap</Button>{' '}
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Autres
+                        Tous
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
