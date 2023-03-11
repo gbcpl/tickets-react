@@ -4,7 +4,6 @@ import Header from './Header';
 import HeaderTags from './HeaderTags';
 import Content from './Content';
 
-
 function App() {
   return (
     <div className="App">

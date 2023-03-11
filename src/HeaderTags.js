@@ -22,7 +22,7 @@ function HeaderTags() {
                 <Button variant="secondary" className="tag">Bootstrap</Button>{' '}
                 <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Tous
+                        Tous les langages
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
