@@ -4,15 +4,10 @@ import './Ticket.css';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 
+
 function Ticket(props) {
 
   const number = props.number;
-  /*const [nameTicket, setNameTicket] = useState(1);
-  
-	useEffect(()=>{
-		setNameTicket(nameTicket + 6);
-	}, []); 
-  console.log(nameTicket)*/
 
   const baseURL = `http://127.0.0.1:8000/tickets/${number}`;
   const [post, setPost] = useState(null);
@@ -23,8 +18,8 @@ function Ticket(props) {
     });
   }, [baseURL]);
   
-  if (!post) return null;
-
+  if (!post || post.length === 0) return null;
+    const createdDate = new Date(post[0].createdDate)
     return (
       <div className="ticket">
         <div className="mainTitle">
@@ -40,7 +35,7 @@ function Ticket(props) {
         </div>
         <div className="created">
             <p>0 réponse</p>
-            <p>Posté par Trchk le {post[0].createdDate}</p>
+            <p>Posté par Trchk le {createdDate.toLocaleDateString()}</p>
         </div>
       </div>
     )

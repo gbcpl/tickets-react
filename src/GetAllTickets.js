@@ -1,23 +1,27 @@
 import Ticket from './Ticket';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-function getAllTickets() { 
+function GetAllTickets() { 
     const rows = [];
+    const [count, setCount] = useState(0);
 
-    for (let i = 1; i <= 10; i++) {
-        /*const [ticketID, setTicketID] = useState("1");
+    useEffect(() => {
+        fetch('http://localhost:8000/tickets/count/')
+        .then(response => response.json())
+        .then(data => {
+            setCount(data.count);
+        })
+        .catch(error => console.error(error));
+    }, []);
 
-        useEffect(()=>{
-            setTicketID(i.toString());
-        }, []);
-        let ticketID = 1; */
-
-        rows.push(<Ticket key={i} number={i} />);
+    for (let i = 8; i <= count+8; i++) {
+            rows.push(<Ticket key={i} number={i} />);
+            console.log(rows);
         
     }
     return (
-        <div>{rows}</div>
+        <div>{rows.reverse()}</div>
     )
 }
 
-export default getAllTickets
+export default GetAllTickets
