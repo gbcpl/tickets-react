@@ -4,14 +4,13 @@ import './Ticket.css';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 
-
 function Ticket(props) {
 
   const number = props.number;
 
   const baseURL = `http://127.0.0.1:8000/tickets/${number}`;
   const [post, setPost] = useState(null);
-  
+
   useEffect(() => {
     axios.get(baseURL).then((response) => {
       setPost(response.data);
@@ -26,7 +25,7 @@ function Ticket(props) {
           <Button className="one">
             HTML
           </Button>
-          <h3 className='title two'>{post[0].title}</h3>
+          <h3 className='title two'><a href="http://localhost:8000/pages/ticket-1.html">{post[0].title}</a></h3>
         </div>
         <div className="tags">
           <p className="checked">&#10003;</p>

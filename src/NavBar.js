@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBar.css';
 import axios from "axios"; 
 
-function NavBar() {
+function NavBar({onCreatedUrlChange}) {
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -21,17 +21,31 @@ function NavBar() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [submittedData, setSubmittedData] = useState(null);
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = { title, description, category };
-    axios.post('http://localhost:8000/tickets/register', data)
+    axios
+      .post("http://localhost:8000/tickets/register", data)
       .then((response) => {
-        setSubmittedData(response.data);
-        setTitle('');
-        setDescription('');
-        setCategory('');
+        setTitle("");
+        setDescription("");
+        setCategory("");
+        const ticketId = response.data.id;
+        const pageData = {
+          id: ticketId,
+          title: title,
+          description: description,
+          category: category,
+        };
+        axios
+          .post("http://localhost:8000/tickets/pages", pageData)
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((error) => {
         console.error(error);
