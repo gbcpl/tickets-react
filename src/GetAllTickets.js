@@ -14,10 +14,10 @@ function GetAllTickets() {
         .catch(error => console.error(error));
     }, []);
 
-    for (let i = 8; i <= count+8; i++) {
-            rows.push(<Ticket key={i} number={i} />);
-            console.log(rows);
-        
+    for (let i = 189; i <= count+189; i++) {
+        rows.push(<Ticket key={i} number={i} />);
+        console.log(rows);
+
     }
     return (
         <div>{rows.reverse()}</div>

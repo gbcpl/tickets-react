@@ -1,12 +1,23 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import Image from 'react-bootstrap/esm/Image';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/esm/Button';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 import './HeaderTags.css';
 
 function HeaderTags() {
+  
+    const urlTags = "http://127.0.0.1:8000/tickets/tags" 
+    const [tags, setTags] = useState(0)
+  
+    useEffect(() => {
+      axios.get(urlTags).then((response) => {
+        setTags(response.data);
+      })
+    }, [urlTags]);
+  
     return (
         <Card>
             <Card.Body className="headerTags">

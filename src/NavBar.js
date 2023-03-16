@@ -95,24 +95,23 @@ function NavBar({onCreatedUrlChange}) {
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </Form.Group>
-              <Form.Select aria-label="Default select example">
-                <option>Catégorie</option>
-                <option value="1">HTML</option>
-                <option value="2">CSS</option>
-                <option value="3">JavaScript</option>
-                <option value="4">PHP</option>
-                <option value="5">SQL</option>
-                <option value="6">React</option>
-                <option value="7">React Native</option>
-                <option value="8">Flutter</option>
-                <option value="9">Symphony</option>
-                <option value="10">Bootstrap</option>
-                <Form.Control
-                  required
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                />
+              <Form.Label>Catégorie</Form.Label>
+              <Form.Select aria-label="Categorie" value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="">Sélectionnez une catégorie</option>
+                <option value="0">HTML</option>
+                <option value="1">CSS</option>
+                <option value="2">JavaScript</option>
+                <option value="3">PHP</option>
+                <option value="4">SQL</option>
+                <option value="5">React</option>
+                <option value="6">React Native</option>
+                <option value="7">Flutter</option>
+                <option value="8">Symphony</option>
+                <option value="9">Bootstrap</option>
               </Form.Select>
+              <Form.Control.Feedback type="invalid">
+                Veuillez sélectionner une catégorie.
+              </Form.Control.Feedback>
               <Button type="submit" onClick={closeTicket}>Envoyer</Button>
             </Form>
         </Modal.Body>

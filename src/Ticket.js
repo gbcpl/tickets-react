@@ -17,15 +17,30 @@ function Ticket(props) {
     });
   }, [baseURL]);
   
+  const urlCategories = "http://127.0.0.1:8000/tickets/categories" 
+  const [categories, setCategories] = useState(0)
+
+  useEffect(() => {
+    axios.get(urlCategories).then((response) => {
+      setCategories(response.data);
+    })
+  }, [urlCategories]);
+
+  
+
   if (!post || post.length === 0) return null;
+
     const createdDate = new Date(post[0].createdDate)
+    const category = post[0].category;
+    const categoryId = category
+
     return (
       <div className="ticket">
         <div className="mainTitle">
           <Button className="one">
-            HTML
+            {categories && categories.length > 0 ? categories[categoryId].name : 'No categories available'}
           </Button>
-          <h3 className='title two'><a href="http://localhost:8000/pages/ticket-1.html">{post[0].title}</a></h3>
+          <h3 className='title two'>{post[0].title}</h3>
         </div>
         <div className="tags">
           <p className="checked">&#10003;</p>
