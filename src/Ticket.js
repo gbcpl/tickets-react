@@ -3,12 +3,13 @@ import React from 'react'
 import './Ticket.css';
 import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/esm/Button';
+import Modal from 'react-bootstrap/esm/Modal';
 
 function Ticket(props) {
 
   const number = props.number;
 
-  const baseURL = `http://127.0.0.1:8000/tickets/${number}`;
+  const baseURL = `http://127.0.0.1:8000/api/tickets/${number}`;
   const [post, setPost] = useState(null);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ function Ticket(props) {
     });
   }, [baseURL]);
   
-  const urlCategories = "http://127.0.0.1:8000/tickets/categories" 
+  const urlCategories = "http://127.0.0.1:8000/api/tickets/categories" 
   const [categories, setCategories] = useState(0)
 
   useEffect(() => {
@@ -26,7 +27,10 @@ function Ticket(props) {
     })
   }, [urlCategories]);
 
-  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   if (!post || post.length === 0) return null;
 
@@ -38,9 +42,22 @@ function Ticket(props) {
       <div className="ticket">
         <div className="mainTitle">
           <Button className="one">
-            {categories && categories.length > 0 ? categories[categoryId].name : 'No categories available'}
+            {categories && categories.length > 0 ? categories[categoryId].name.toUpperCase() : 'No categories available'}
           </Button>
-          <h3 className='title two'>{post[0].title}</h3>
+          <Button className="one" onClick={handleShow}>
+            <h3 className='title two'>{post[0].title}</h3>
+          </Button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>{post[0].title}</Modal.Title>
+            </Modal.Header>
+           <Modal.Body>{post[0].description}</Modal.Body>
+           <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Fermer
+              </Button>
+        </Modal.Footer>
+        </Modal>
         </div>
         <div className="tags">
           <p className="checked">&#10003;</p>

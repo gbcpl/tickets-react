@@ -21,31 +21,27 @@ function NavBar({onCreatedUrlChange}) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
+  const [createdDate, setCreatedDate] = useState('')
   
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = { title, description, category };
     axios
-      .post("http://localhost:8000/tickets/register", data)
+      .post("http://localhost:8000/api/tickets/register", data)
       .then((response) => {
         setTitle("");
         setDescription("");
         setCategory("");
+        setCreatedDate("")
         const ticketId = response.data.id;
         const pageData = {
           id: ticketId,
           title: title,
           description: description,
           category: category,
+          createdDate: createdDate
         };
-        axios
-          .post("http://localhost:8000/tickets/pages", pageData)
-          .then((response) => {
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        
       })
       .catch((error) => {
         console.error(error);

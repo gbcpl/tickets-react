@@ -6,10 +6,10 @@ function GetAllTickets() {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8000/tickets/count/')
+        fetch('http://localhost:8000/api/tickets/count')
         .then(response => response.json())
         .then(data => {
-            setCount(data.count);
+            setCount(data.count[0]['COUNT(*)']);
         })
         .catch(error => console.error(error));
     }, []);

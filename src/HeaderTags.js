@@ -9,7 +9,7 @@ import './HeaderTags.css';
 
 function HeaderTags() {
   
-    const urlTags = "http://127.0.0.1:8000/tickets/tags" 
+    const urlTags = "http://127.0.0.1:8000/api/tickets/tags" 
     const [tags, setTags] = useState(0)
   
     useEffect(() => {
